@@ -1,10 +1,52 @@
 ---
 layout: default
-title: CentOS安装 docker
+title: CentOS安装 Docker
 ---
 
 <h2>{{ page.title }}</h2>
 
-<p>CentOS安装 docker</p>
-
 <p>{{ page.date | date_to_string }}</p>
+
+使用yum方式安装Docker
+
+
+1.使用 sudo 或 root 权限的用户登入系统。
+
+2.确保你的 yum 是最新的
+
+    $ sudo yum update
+
+3.添加 yum 仓库
+
+    $ sudo tee /etc/yum.repos.d/docker.repo
+
+4.查找所有可安装的软件包
+
+    $sudo yum list installed | grep docker
+
+5.安装 Docker 包
+
+    $sudo yum install docker-ce.x86_64
+
+6.启动 docker 守护进程
+
+    $ sudo  systemctl start docker.service
+
+7.验证 docker 是否安装成功
+
+    $ sudodocker run hello-world
+
+8.配置让 docker 服务随系统自动启动
+
+    $ sudo systemctl enable docker.service
+
+9.使用yum卸载docker
+
+    $ sudo yum list installed | grep docker
+
+    $ sudo yum -y remove docker-ce.x86_64
+
+    $ sudo rm -rf /var/lib/docker
+
+
+
